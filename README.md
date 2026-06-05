@@ -1,5 +1,9 @@
 # Docker Monitoring Dashboard
 
+## Dashboard Preview
+
+![Docker Monitoring Dashboard](dashboard.png)
+
 A lightweight monitoring dashboard built using Flask and Docker.
 
 ## Features
@@ -8,6 +12,8 @@ A lightweight monitoring dashboard built using Flask and Docker.
 * Monitor CPU Usage
 * Monitor Memory Usage
 * Monitor Disk Usage
+* Monitor System Uptime
+* Improved Dashboard UI
 * Containerized using Docker
 
 ## Tech Stack
