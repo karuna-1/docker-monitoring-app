@@ -1,6 +1,7 @@
 from flask import Flask
 import psutil
 import socket
+import time
 
 app = Flask(__name__)
 
@@ -11,19 +12,46 @@ def home():
     disk = psutil.disk_usage("/").percent
     hostname = socket.gethostname()
 
+    uptime = round(time.time() / 3600, 2)
+
     return f"""
+<style>
+body {{
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}}
+
+.card {{
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+}}
+</style>
+
 <h1>🚀 Docker Monitoring Dashboard</h1>
 
-<hr>
+<div class="card">
+<b>Hostname:</b> {hostname}
+</div>
 
-<h3>System Information</h3>
+<div class="card">
+<b>CPU Usage:</b> {cpu}%
+</div>
 
-<p><b>Hostname:</b> {hostname}</p>
-<p><b>CPU Usage:</b> {cpu}%</p>
-<p><b>Memory Usage:</b> {memory}%</p>
-<p><b>Disk Usage:</b> {disk}%</p>
+<div class="card">
+<b>Memory Usage:</b> {memory}%
+</div>
 
-<hr>
+<div class="card">
+<b>Disk Usage:</b> {disk}%
+</div>
+
+<div class="card">
+<b>System Uptime:</b> {uptime} hours
+</div>
 
 <p>Built using Flask + Docker</p>
 """
